@@ -1,12 +1,14 @@
-var randomNumber;
-var randomNumber19;
+var computerMove, randomNumber;
 randomNumber = Math.floor(Math.random() * 3 + 1);
-randomNumber19 = Math.floor(Math.random() * 9 + 11);
-printMessage('Wylosowana liczba to: ' + randomNumber);
-printMessage('Wylosowana liczba dodatkowa to: ' + randomNumber19);
-
-
-var computerMove;
-computerMove = 'papier';
-printMessage('Zagrałem ' + computerMove + '! Jeśli Twój ruch to nożyczki, to wygrywasz!');
-
+console.log('wylosowana liczba to: ' + randomNumber);
+if (randomNumber == '1') {
+  computerMove = 'kamień';
+} else if (randomNumber == '2') {
+    computerMove = 'papier';
+} else if (randomNumber == '3') {
+    computerMove = 'nożyce';
+} 
+else {
+  computerMove = 'nieznany ruch';
+}
+printMessage('Mój ruch: ' + computerMove);
