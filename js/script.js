@@ -1,23 +1,12 @@
-var argButtonName, buttonTest, buttonRock, buttonPaper, buttonScissors, argPlayerPoints, argComputerPoints, results;
+let PlayerPoints = 0;
+let ComputerPoints = 0;
 
-argPlayerPoints = 0;
-argComputerPoints = 0;
-results = document.getElementById('results');
+const results = document.getElementById('results'), buttonRock = document.getElementById('button-rock'), buttonPaper = document.getElementById('button-paper'), buttonScissors = document.getElementById('button-scissors');
 
-buttonTest = document.getElementById('button-test');
-buttonRock = document.getElementById('button-rock');
-buttonPaper = document.getElementById('button-paper');
-buttonScissors = document.getElementById('button-scissors');
-
-function buttonClicked(argButtonName) {
+function buttonClicked(argButtonName,computerMove, playerMove, randomNumber) {
   clearMessages();
   console.log(argButtonName + ' został kliknięty');
 
-  var argMoveId, argPlayerMove, argComputerMove, computerMove, playerMove, randomNumber, playerInput;
-
-    /**
-     * potwierdzenie ruchu 
-     */
     function getMoveName(argMoveId) {
     console.log('wywołano funkcję getMoveName z argumentem: ' + argMoveId);
     if (argMoveId == 1) {
@@ -43,27 +32,27 @@ function buttonClicked(argButtonName) {
     console.log('wywołano funkcję displayResults z argumentami: ' + argPlayerMove + ', ' + argComputerMove);
     if (argPlayerMove == 'papier' && argComputerMove == 'kamień') {
         printMessage('Wygrywasz!');
-        argPlayerPoints = argPlayerPoints+1;
+        PlayerPoints = PlayerPoints+1;
     } 
     else if (argPlayerMove == 'nożyce' && argComputerMove == 'papier') {
         printMessage('Wygrywasz!');
-        argPlayerPoints = argPlayerPoints+1;
+        PlayerPoints = PlayerPoints+1;
     }   
     else if (argPlayerMove == 'kamień' && argComputerMove == 'nożyce') {
         printMessage('Wygrywasz!');
-        argPlayerPoints = argPlayerPoints+1;
+        PlayerPoints = PlayerPoints+1;
     }   
     else if (argPlayerMove == argComputerMove) {
         printMessage('Remis!');
     }
     else {
         printMessage('Przegrywasz :(');
-        argComputerPoints = argComputerPoints+1;
+        ComputerPoints = ComputerPoints+1;
     }
     printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
     
-    console.log('Punkty gracza: ' + argPlayerPoints);
-    console.log('Punkty kąkutera: ' + argComputerPoints);
+    console.log('Punkty gracza: ' + PlayerPoints);
+    console.log('Punkty kąkutera: ' + ComputerPoints);
     }
     playerMove = argButtonName;
     console.log('ruch gracza to: ' + playerMove);
@@ -71,8 +60,8 @@ function buttonClicked(argButtonName) {
     console.log('wylosowana liczba to: ' + randomNumber);
     computerMove = getMoveName(randomNumber);
     console.log('ruch komputera to: ' + computerMove);
-    displayResult(playerMove, computerMove, argPlayerPoints, argComputerPoints);
-    results.innerHTML = 'Punkty gracza: ' + argPlayerPoints + ' | Punkty komputera: ' + argComputerPoints;
+    displayResult(playerMove, computerMove, PlayerPoints, ComputerPoints);
+    results.innerHTML = 'Punkty gracza: ' + PlayerPoints + ' | Punkty komputera: ' + ComputerPoints;
 }
 
 buttonRock.addEventListener('click', function(){ buttonClicked('kamień'); });
