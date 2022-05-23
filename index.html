@@ -8,12 +8,24 @@
 <body>
 	<div class="container">
 		<div id="buttons">
-            <button id="button-rock">Kamień</button>
-            <button id="button-paper">Papier</button>
-            <button id="button-scissors">Nożyce</button>
+			<div class="button-wrapper b-w-rock">
+				<img src="images/icon-rock.svg" alt="rock">
+				<button type="button" id="button-rock">Kamień</button>
+			</div>
+			<div class="button-wrapper b-w-paper">
+				<img src="images/icon-paper.svg" alt="paper">
+				<button type="button" id="button-paper">Papier</button>
+			</div>
+			<div class="button-wrapper b-w-scissors">
+				<img src="images/icon-scissors.svg" alt="scissors">
+				<button type="button" id="button-scissors">Nożyce</button>
+			</div>
         </div>
-		<div id="messages"></div>
-        <div id="results"></div>
+		<div class="messages-wrapper">
+			<h3>Informacje o grze:</h3>
+			<div id="messages">Czekamy na pierwszą rundę! : )</div>
+		</div>
+		<div id="results"></div>
 	</div>
 	<script src="js/functions.js"></script>
 	<script src="js/script.js"></script>
