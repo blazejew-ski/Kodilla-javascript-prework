@@ -2,9 +2,6 @@
 
 let playerPoints = 0;
 let computerPoints = 0;
-let computerMove;
-let playerMove;
-let randomNumber;
 const results = document.getElementById('results');
 const buttonRock = document.getElementById('button-rock');
 const buttonPaper = document.getElementById('button-paper');
@@ -13,13 +10,13 @@ const buttonScissors = document.getElementById('button-scissors');
 // functions
 
 function buttonClicked(argButtonName) {
+    const playerMove = argButtonName;
+    const randomNumber = Math.floor(Math.random() * 3 + 1);
+    const computerMove = getMoveName(randomNumber);
     clearMessages();
     console.log(argButtonName + ' został kliknięty');
-    playerMove = argButtonName;
     console.log('ruch gracza to: ' + playerMove);
-    randomNumber = Math.floor(Math.random() * 3 + 1);
     console.log('wylosowana liczba to: ' + randomNumber);
-    computerMove = getMoveName(randomNumber);
     console.log('ruch komputera to: ' + computerMove);
     displayResult(playerMove, computerMove, playerPoints, computerPoints);
     results.innerHTML = '<div class="pkt-g"><h3>Punkty<br/>gracza:</h3><h5>' + playerPoints + '</h5></div><div class="pkt-k"><h3>Punkty<br/>komputera:</h3><h5>' + computerPoints + '</h5></div>';
@@ -60,6 +57,7 @@ function displayResult(argPlayerMove, argComputerMove) {
     console.log('Punkty gracza: ' + playerPoints);
     console.log('Punkty kąkutera: ' + computerPoints);
 }
+
 
 buttonRock.addEventListener('click', function() {
     buttonClicked('kamień');
